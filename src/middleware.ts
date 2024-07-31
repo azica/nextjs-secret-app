@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
         const key = searchParams.get('key');
         if (key) {
             const response = NextResponse.redirect(new URL('/', origin));
-            response.cookies.set('key', key, { httpOnly: true, path: '/' });
+            response.cookies.set('key', key, { path: '/' });
             return response;
         } else {
             return new NextResponse('Key is required', { status: 400 });
@@ -37,5 +37,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/', '/secret', "/iframe"],
+    matcher: ['/', '/secret', '/iframe'],
 };
